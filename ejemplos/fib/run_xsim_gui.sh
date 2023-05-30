@@ -1,0 +1,6 @@
+#!/bin/bash
+source Vivado/vivado_version.sh
+
+xvlog -sv design/calc.sv design/fsm.sv design/fib.sv tb/tb.sv
+xelab -debug typical -s fib top_tb -timescale 1ns/1ps
+xsim --gui fib
