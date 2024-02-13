@@ -32,8 +32,17 @@ initial begin
     i <= 0;
 end
 
-//0,1,2,3,4,5,6, 7, 8, 9
-//0,1,1,2,3,5,8,13,21,34
+function automatic int fib_ref(int num);
+    if(num == 0 )begin
+        fib_ref = 0;
+    end
+    else if(num == 1) begin
+        fib_ref = 1;
+    end 
+    else begin
+        fib_ref = fib_ref(num - 1)+fib_ref(num - 2);
+    end
+endfunction
 
 task automatic test_sequence(bit [4:0] num);
     i<= num;
@@ -42,7 +51,11 @@ task automatic test_sequence(bit [4:0] num);
     start<=0;
     wait(done==1);
     wait_n_clks(1);
-    $display($sformatf("Index: %0d result: %0d",num,result));
+    if(result !=fib_ref(num)) begin
+        $display("ERROR");
+        $finish;
+    end
+    $display($sformatf("SUCCESS Index: %0d result: %0d expect: %0d",num,result, fib_ref(num)));
     wait_n_clks(10);
 endtask
 
@@ -52,8 +65,9 @@ initial begin
     wait_n_clks(10);
     rst <= 0;
     wait_n_clks(10);
-    repeat(10)
+    repeat(10) begin
         test_sequence($random());
+    end
     $finish;
 end
 
