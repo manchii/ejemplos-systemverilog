@@ -25,7 +25,7 @@ logic incr;
 
 // Secuencial
 
-always_ff@(posedge clk, rst) begin   
+always_ff@(posedge clk, posedge rst) begin   
     if(rst) begin 
         states <= INIT;
     end else 
@@ -79,7 +79,7 @@ end
 
 //counter 
 
-always_ff@(posedge clk, rst) begin
+always_ff@(posedge clk, posedge rst) begin
     if(rst)
         counter <= 'b0;
     else

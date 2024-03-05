@@ -15,7 +15,7 @@ module calc (
     assign rst_reg = rst | rst_ctl;
 
     //Registros
-    always_ff@(posedge clk,rst_reg) begin
+    always_ff@(posedge clk,posedge rst_reg) begin
         Fn1 <= Fn1;
         Fn2 <= Fn2;
         if(rst_ctl)begin
