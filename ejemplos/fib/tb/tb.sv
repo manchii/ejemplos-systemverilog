@@ -68,7 +68,7 @@ initial begin
     rst <= 0;
     wait_n_clks(10);
     repeat(10) begin
-        test_sequence($random());
+        test_sequence($urandom());
     end
     $finish;
 end
