@@ -25,3 +25,4 @@ ejemplos/fib/dsim_work/*
 ejemplos/fib/*.env
 ejemplos/fib/*.db
 ejemplos/fib/*.mxd
+dsim.env

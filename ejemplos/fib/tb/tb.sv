@@ -1,4 +1,4 @@
-
+//Codigo de simulacion siempre se hace secuencial
 
 module tb ();
 
@@ -21,18 +21,20 @@ always begin
 end
 
 task automatic wait_n_clks(int n);
+    //tasks permiten delays en tiempo de simulacion
     repeat(n) @(posedge clk);
 endtask
 
 
 initial begin
     clk <= 0;
-    rst <= 1;
+    rst <= 1; // toda simulacion inicia con reset en alto
     start <= 0;
     i <= 0;
 end
 
 function automatic int fib_ref(int num);
+    //functions NO permiten delays en tiempo de simulacion
     if(num == 0 )begin
         fib_ref = 0;
     end
@@ -51,7 +53,7 @@ task automatic test_sequence(bit [4:0] num);
     start<=0;
     wait(done==1);
     wait_n_clks(1);
-    if(result !=fib_ref(num)) begin
+    if(result != fib_ref(num)) begin
         $display("ERROR");
         $finish;
     end

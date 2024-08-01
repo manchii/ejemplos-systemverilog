@@ -2,11 +2,17 @@
 all:
 
 clean:
-	rm *.log
+	rm -f *.log
 	rm -rf xsim.dir/ 
-	rm *.pb
-	rm *.jou
+	rm -f *.pb
+	rm -f *.jou
+	rm -f *.mxd
+	rm -f *.db
+	rm -f *.env
+	rm -rf dsim_work
 
-run_xsim: install label2
-	echo $PATH_TO_SOMETHING
+run_xsim:
 	scripts/run_xsim.sh
+
+run_dsim:
+	scripts/run_dsim.sh
