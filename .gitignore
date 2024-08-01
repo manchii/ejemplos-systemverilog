@@ -21,3 +21,7 @@ ejemplos/fib/xsim.dir/work/tb.sdb
 ejemplos/fib/xsim.dir/work/work.rlx
 ejemplos/fib/fib.wdb
 ejemplos/fib-clase.zip
+ejemplos/fib/dsim_work/*
+ejemplos/fib/*.env
+ejemplos/fib/*.db
+ejemplos/fib/*.mxd
