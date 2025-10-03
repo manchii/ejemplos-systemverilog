@@ -10,6 +10,7 @@ clean:
 	rm -f *.db
 	rm -f *.env
 	rm -rf dsim_work
+	rm -f *.o
 
 run_xsim:
 	scripts/run_xsim.sh
